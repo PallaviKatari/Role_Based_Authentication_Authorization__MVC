@@ -19,7 +19,7 @@
                         aria-expanded="false">
                     <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">ASPSnippets</a>
+                <a class="navbar-brand" href="#">Role-Based Authorization</a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <div id="Menu1">
@@ -27,16 +27,11 @@
                         <li><a class="selected" href="#">Home</a></li>
                         @if (User.IsInRole("Administrator"))
                         {
-                            <li>
-                                <a class="popout" href="#">Services</a><ul class="level2 dropdown-menu">
-                                    <li><a class="" href="#">Consulting</a></li>
-                                    <li><a class="" href="#">Outsourcing</a></li>
-                                </ul>
-                            </li>
+                            <li>@Html.ActionLink("User Details", "UserDetails", "Home")</li>
                         }
                         <li><a href="#">About</a></li>
                         <li><a href="#">Contact</a></li>
-                        <li><a href="#" onclick="document.forms[0].submit();">Logout</a></li>
+                        <li>@Html.ActionLink("Logout", "Logout", "Home")</li>
                     </ul>
                 </div>
             </div>
@@ -49,26 +44,26 @@
         <br />
         @using (Html.BeginForm("Logout", "Home", FormMethod.Post))
         {
-            
+
         }
     </div>
     <script type="text/javascript" src='https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.3.min.js'></script>
     <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/js/bootstrap.min.js'></script>
-    <script type="text/javascript">
-        $(function () {
-            //Remove the style attributes.
-            $(".navbar-nav li, .navbar-nav a, .navbar-nav ul").removeAttr('style');
+    @*<script type="text/javascript">
+            $(function () {
+                //Remove the style attributes.
+                $(".navbar-nav li, .navbar-nav a, .navbar-nav ul").removeAttr('style');
 
-            //Apply the Bootstrap class to the Submenu.
-            $(".dropdown-menu").closest("li").removeClass().addClass("dropdown-toggle");
+                //Apply the Bootstrap class to the Submenu.
+                $(".dropdown-menu").closest("li").removeClass().addClass("dropdown-toggle");
 
-            //Apply the Bootstrap properties to the Submenu.
-            $(".dropdown-toggle").find("a").eq(0).attr("data-toggle", "dropdown").attr("aria-haspopup", "true").attr("aria-expanded", "false").append("<span class='caret'></span>");
+                //Apply the Bootstrap properties to the Submenu.
+                $(".dropdown-toggle").find("a").eq(0).attr("data-toggle", "dropdown").attr("aria-haspopup", "true").attr("aria-expanded", "false").append("<span class='caret'></span>");
 
-            //Apply the Bootstrap "active" class to the selected Menu item.
-            $("a.selected").closest("li").addClass("active");
-            $("a.selected").closest(".dropdown-toggle").addClass("active");
-        });
-    </script>
+                //Apply the Bootstrap "active" class to the selected Menu item.
+                $("a.selected").closest("li").addClass("active");
+                $("a.selected").closest(".dropdown-toggle").addClass("active");
+            });
+        </script>*@
 </body>
 </html>

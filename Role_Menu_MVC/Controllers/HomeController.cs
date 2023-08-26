@@ -61,8 +61,16 @@ namespace Role_Menu_MVC.Controllers
             return View(user);
         }
 
-        [HttpPost]
-        [Authorize]
+        [Authorize(Roles="Administrator")]
+        public ActionResult UserDetails()
+        {
+            UsersEntities usersEntities = new UsersEntities();  
+            List<User> users = usersEntities.Users.ToList();
+            return View(users);
+        }
+
+        //[HttpPost]
+        //[Authorize]
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
