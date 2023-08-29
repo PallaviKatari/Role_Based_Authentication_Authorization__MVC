@@ -21,17 +21,18 @@ namespace Role_Menu_MVC
 
         protected void Application_AuthenticateRequest(Object sender, EventArgs e)
         {
-            if (HttpContext.Current.User != null)
+            if (HttpContext.Current.User != null) //Admin & admin@123
             {
-                if (HttpContext.Current.User.Identity.IsAuthenticated)
+                if (HttpContext.Current.User.Identity.IsAuthenticated) //Admin & admin@123
                 {
-                    if (HttpContext.Current.User.Identity is FormsIdentity)
+                    if (HttpContext.Current.User.Identity is FormsIdentity) //True
                     {
                         FormsIdentity id = (FormsIdentity)HttpContext.Current.User.Identity;
-                        FormsAuthenticationTicket ticket = id.Ticket;
-                        string userData = ticket.UserData;
-                        string[] roles = userData.Split(',');
-                        HttpContext.Current.User = new GenericPrincipal(id, roles);
+                        FormsAuthenticationTicket ticket = id.Ticket; //Gets the ticket created
+                        string userData = ticket.UserData; // Ticket for the user logged in
+                        string[] roles = userData.Split(','); //Checks which all Roles can access the Action Method
+                        //true if the current GenericPrincipal is a member of the specified role; otherwise, false.
+                        HttpContext.Current.User = new GenericPrincipal(id, roles);//Determines whether the current GenericPrincipal belongs to the specified role.
                     }
                 }
             }

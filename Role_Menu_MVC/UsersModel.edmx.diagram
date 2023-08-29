@@ -6,7 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="632eff9cb5c540eb8351742b68c99955" Name="Diagram1">
         <EntityTypeShape EntityType="UsersModel.User" Width="1.5" PointX="2.375" PointY="0.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="UsersModel.UserActivation" Width="1.5" PointX="0.75" PointY="0.5" />
+        <EntityTypeShape EntityType="UsersModel.UserActivation" Width="1.5" PointX="0.5" PointY="0.625" />
         <EntityTypeShape EntityType="UsersModel.Role" Width="1.5" PointX="4.25" PointY="0.5" />
         <AssociationConnector Association="UsersModel.FK_Users_Roles" />
       </Diagram>
